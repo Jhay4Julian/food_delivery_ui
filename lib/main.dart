@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Food Delivery UI',
       theme: ThemeData(
         primaryColor: Colors.deepOrangeAccent,
-        scaffoldBackgroundColor: Colors.grey
+        scaffoldBackgroundColor: Colors.grey[100]
       ),
       home: HomeScreen(),
     );
