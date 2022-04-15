@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_ui/widgets/nearby_restaurants.dart';
 import 'package:flutter_food_delivery_ui/widgets/recent_orders.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,7 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          RecentOrders()
+          RecentOrders(),
+          NearbyRestaurants()
         ],
       )
     );
