@@ -5,7 +5,7 @@ import 'package:flutter_food_delivery_ui/models/order.dart';
 class RecentOrders extends StatelessWidget {
   _buildRecentOrder(BuildContext context, Order order) {
     return Container(
-      margin: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       width: 320.0,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -29,32 +29,32 @@ class RecentOrders extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.all(12.0),
+                    margin: const EdgeInsets.all(12.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           order.food.name,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Text(
                           order.restaurant.name,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Text(
                           order.date,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),
@@ -68,14 +68,14 @@ class RecentOrders extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(right: 20.0),
+            margin: const EdgeInsets.only(right: 20.0),
             width: 48.0,
             decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(30.0)),
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               iconSize: 30.0,
               color: Colors.white,
             ),

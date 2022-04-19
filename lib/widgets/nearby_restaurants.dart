@@ -22,7 +22,7 @@ class _NearbyRestaurantsState extends State<NearbyRestaurants> {
             ),
           ),
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15.0),
@@ -44,30 +44,30 @@ class _NearbyRestaurantsState extends State<NearbyRestaurants> {
                 ),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.all(12.0),
+                    margin: const EdgeInsets.all(12.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(restaurant.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold
                         ),
                         overflow: TextOverflow.ellipsis
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         RatingStars(restaurant.rating),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Text(restaurant.address,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w600
                         ),
                         overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 4.0),
-                        Text('0.3 miles away',
+                        const SizedBox(height: 4.0),
+                        const Text('0.3 miles away',
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w600

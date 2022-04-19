@@ -15,7 +15,7 @@ class RatingStars extends StatelessWidget {
     stars.trim();
     return Text(
       stars,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 18.0
       ),
     );
