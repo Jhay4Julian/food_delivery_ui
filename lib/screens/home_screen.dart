@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           TextButton(
             onPressed: (){},
-            child: Text('Cart', style: TextStyle(fontSize: 20.0, color: Colors.white),))
+            child: const Text('Cart', style: TextStyle(fontSize: 20.0, color: Colors.white),))
         ],
       ),
       body: ListView(
@@ -30,12 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(20.0),
             child: TextField(
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+                contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
                 fillColor: Colors.white,
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(width: 0.8),
+                  borderSide: const BorderSide(width: 0.8),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
