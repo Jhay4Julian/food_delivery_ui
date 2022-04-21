@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_ui/models/food.dart';
 import 'package:flutter_food_delivery_ui/models/restaurant.dart';
+import 'package:flutter_food_delivery_ui/widgets/rating_stars.dart';
 
 class RestaurantScreen extends StatefulWidget {
   
@@ -12,10 +14,94 @@ class RestaurantScreen extends StatefulWidget {
 }
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
+
+  _buildMenuItem(Food menuItem) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 15.0),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              height: 175.0,
+              width: 175.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    menuItem.imageUrl),
+                  fit: BoxFit.cover
+                ),
+                borderRadius: BorderRadius.circular(15.0)
+              ),
+            ),
+            Container(
+              height: 175.0,
+              width: 175.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Colors.black.withOpacity(0.3),
+                    Colors.black87.withOpacity(0.3),
+                    Colors.black54.withOpacity(0.3),
+                    Colors.black38.withOpacity(0.3),
+                  ],
+                  stops: const [
+                    0.1, 0.4, 0.6, 0.9
+                  ]
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 65.0,
+              child: Column(
+                children: [
+                  Text(menuItem.name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2
+                  ) 
+                  ),
+                  Text(
+                    '\$${menuItem.price}',
+                    style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2
+                  ) 
+                  )
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 10.0, right: 10.0,
+              child: Container(
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(30.0)),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.add),
+                iconSize: 30.0,
+                color: Colors.white,
+              ),
+            ),)
+          ]
+        ),
+      )
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
             children: [
@@ -49,7 +135,101 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 ),
               )
             ],
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.restaurant.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 22.0,
+                      ),
+                    ),
+                    const Text(
+                      '0.3 miles away',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
+                  ]
+                ),
+                RatingStars(widget.restaurant.rating),
+                const SizedBox(height: 6.0),
+                Text(
+                  widget.restaurant.address,
+                  style: const TextStyle(
+                    fontSize: 18.0
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FlatButton(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                color: Theme.of(context).primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)
+                ),
+                onPressed: (){},
+                child: const Text(
+                  'Reviews',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white
+                  ),
+                ),
+              ),
+              FlatButton(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                color: Theme.of(context).primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)
+                ),
+                onPressed: (){},
+                child: const Text(
+                  'Contact',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10.0),
+          Divider(
+            color: Theme.of(context).primaryColor,
+            thickness: 1.0,
+          ),
+          const SizedBox(height: 10.0),
+          const Center(
+            child: Text(
+              'Menu',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1.2
+              ),
+            ),
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: List.generate(widget.restaurant.menu.length, (index) {
+                Food food = widget.restaurant.menu[index];
+                return _buildMenuItem(food);
+              }),
+            ),
+          ),
         ]
       ),
     );
